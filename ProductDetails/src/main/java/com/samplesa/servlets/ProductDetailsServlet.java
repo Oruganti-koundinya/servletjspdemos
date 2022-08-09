@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,7 +27,7 @@ public class ProductDetailsServlet extends HttpServlet {
 		public void init(ServletConfig config) throws ServletException {
 
 			try {
-				System.out.println("AddServlet init");
+				System.out.println("ProductServlet init");
 				ServletContext context = config.getServletContext();
 				Class.forName("com.mysql.jdbc.Driver");
 				connection = DriverManager.getConnection(context.getInitParameter("dburl"),
@@ -41,10 +42,14 @@ public class ProductDetailsServlet extends HttpServlet {
 		
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 				throws ServletException, IOException {
-			System.out.println("doGet");
-			try (Statement statement = connection.createStatement();) {
-				ResultSet results = statement.executeQuery("select * from product where product_id=?");
-				PrintWriter out = response.getWriter();
+			response.setContentType("text/html");
+			int product_id = Integer.parseInt(request.getParameter("product_id"));
+			PrintWriter out = response.getWriter();
+			//System.out.println("doGet");
+			try (PreparedStatement statement = connection.prepareStatement("select * from product where product_id=?");) {
+				statement.setInt(1, product_id);
+				ResultSet results = statement.executeQuery();
+				//ResultSet results = statement.executeQuery("select * from product where product_id=?");
 				out.println("<table>");
 				out.println("<tr>");
 				out.println("<th>product_id</th>");

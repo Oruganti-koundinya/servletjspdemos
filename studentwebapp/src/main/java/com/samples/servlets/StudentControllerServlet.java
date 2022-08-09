@@ -29,8 +29,7 @@ public class StudentControllerServlet extends HttpServlet {
 		this.studentDBUtil = new StudentDBUtil(datasource);
 	}
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Student> students = studentDBUtil.getStudents();
 		
 		request.setAttribute("STUDENT_LIST", students);
@@ -40,9 +39,17 @@ public class StudentControllerServlet extends HttpServlet {
 		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String firstname = request.getParameter("firstname");
+		String lastname = request.getParameter("lastname");
+		String email = request.getParameter("email");
+		
+		Student student = new Student(0, firstname, lastname, email);
+		
+		studentDBUtil.addstudent(student);
+		
 		doGet(request, response);
+		
 	}
 
 }
