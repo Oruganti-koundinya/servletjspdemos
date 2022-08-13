@@ -152,7 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="userwebapp" path="/userwebapp" reloadable="true" source="org.eclipse.jst.jee.server:userwebapp"/><Context docBase="UserLoginProject" path="/UserLoginProject" reloadable="true" source="org.eclipse.jst.jee.server:UserLoginProject"/><Context docBase="ListenerDemo" path="/ListenerDemo" reloadable="true" source="org.eclipse.jst.jee.server:ListenerDemo"/><Context docBase="uservalidation" path="/uservalidation" reloadable="true" source="org.eclipse.jst.jee.server:uservalidation"/><Context docBase="ProductDetails" path="/ProductDetails" reloadable="true" source="org.eclipse.jst.jee.server:ProductDetails"/><Context docBase="jspbasics" path="/jspbasics" reloadable="true" source="org.eclipse.jst.jee.server:jspbasics"/><Context docBase="tagdemo" path="/tagdemo" reloadable="true" source="org.eclipse.jst.jee.server:tagdemo"/><Context docBase="mvcdemo" path="/mvcdemo" reloadable="true" source="org.eclipse.jst.jee.server:mvcdemo"/><Context docBase="studentwebapp" path="/studentwebapp" reloadable="true" source="org.eclipse.jst.jee.server:studentwebapp"/></Host>
+      <Context docBase="userproductwebapp" path="/userproductwebapp" reloadable="true" source="org.eclipse.jst.jee.server:userproductwebapp"/></Host>
     </Engine>
   </Service>
 </Server>
